@@ -16,10 +16,10 @@ app.use(express.json());
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3001;
 
-// Simple in-memory session store (Nonce challenges)
+
 const challenges = new Map<string, string>();
 
-// Auth Flow 1: Request Challenge
+
 app.get('/api/auth/challenge', (req, res) => {
   const { pubkey } = req.query;
   if (!pubkey || typeof pubkey !== 'string') {
@@ -27,7 +27,7 @@ app.get('/api/auth/challenge', (req, res) => {
   }
 
   const nonce = crypto.randomBytes(32).toString('hex');
-  const message = `Sign this message to authenticate with Sovereign AI.\nNonce: ${nonce}`;
+  const message = `Sign this message to authenticate with blockhashers.\nNonce: ${nonce}`;
   
   challenges.set(pubkey, message);
   res.json({ message });

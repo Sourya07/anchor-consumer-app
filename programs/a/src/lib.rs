@@ -29,7 +29,7 @@ pub struct Initialize<'info> {
     #[account(
         init,
         payer = user,
-        space = 8 + 32 + 32 + 1, // discriminator (8) + pubkey (32) + hash (32) + bump (1)
+        space = 8 + 32 + 32 + 1, 
         seeds = [b"sovereign_ai", user.key().as_ref()],
         bump
     )]
